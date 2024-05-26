@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/sign-in.css">
+    <title>로그인</title>
+</head>
+<body>
+
+    <header>
+        <div id="page-title">아무 말 대잔치</div>
+    </header>
+
+
+    <form id="sign-in-form" action="/posts" method="get">
+        <div id="form-title">로그인</div>
+        
+        <div id="input-box">
+
+            <label for="email-input" id="email-text">이메일</label>
+            <input type="text" id="email-input" name="email" placeholder="이메일을 입력하세요">
+
+            <label for="password-input" id="password-text">비밀번호</div>
+            <input type="password" id="password-input" name="password" placeholder="비밀번호를 입력하세요">
+            
+            <div id="helper-text">*helper-text</div>
+
+        </div>
+
+
+
+        <button id="sign-in-btn" type="submit">로그인</button>
+    </form>
+
+
+    <button id="sign-up-btn" onclick="location.href='/users/sign-up'">회원가입</button>
+
+
+
+
+    <script type="module">
+        import {BACKEND_IP_PORT} from '/javascript/global.js';
+
+        localStorage.setItem('backend-ip-port', BACKEND_IP_PORT);        
+    </script>
+    <script type="text/javascript" src="/javascript/sign-in.js"></script>
+</body>
+</html>

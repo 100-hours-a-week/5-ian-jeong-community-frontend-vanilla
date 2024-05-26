@@ -1,0 +1,165 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #F4F5F7;
+}
+
+
+
+
+header {
+    width: 100%;
+    height: 9.6vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 1px solid #000;
+}
+
+#page-title {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+
+
+
+
+
+
+
+
+#form-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38.19px;
+
+    margin-top: 24.66vh;    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+#input-box {
+    margin-top: 6.2vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#email-text {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.9px;
+}
+
+#email-input {
+    width: 335px;
+    height: 17px;
+
+    margin-top: 0.7vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    border-radius: 4px;
+    border: 1px solid #000;
+    background-color: #F4F5F7;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.71px;
+}
+
+
+
+#password-text {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.9px;
+    margin-top: 1.4vh;
+}
+
+#password-input {
+    width: 335px;
+    height: 17px;
+
+    margin-top: 0.7vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    border-radius: 4px;
+    border: 1px solid #000;
+    background-color: #F4F5F7;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.71px;
+}
+
+#helper-text {
+    width: 355px;
+    margin-top: 0.3vh;
+
+    color: #FF0000;
+    
+    font-weight: 400;
+    font-size: 12px;
+
+    visibility: hidden;
+}
+
+
+
+
+#sign-in-btn {
+    margin-top: 2.1vh;
+    width: 353px;
+    height: 33px;
+    background-color: #ACA0EB;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16.71px;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 1s;
+    
+}
+
+#sign-up-btn {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.71px;
+    margin-top: 1.1vh;
+    background-color: #F4F5F7;
+    border: none;
+    cursor: pointer;
+}

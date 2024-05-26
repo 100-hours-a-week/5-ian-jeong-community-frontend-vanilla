@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/add-post.css">
+    <title>게시글 작성</title>
+</head>
+<body>
+    <header>
+        <div id="title-text">아무 말 대잔치</div>
+        <div id="header-box">
+            <img id="back-btn" src="/images/navi.png" alt="back">
+            <img id="profile-img" src="" alt="profile-image">
+
+            <div id="drop-down-box">
+
+                
+                <button id="user-edit-btn" class="drop-down">회원정보 수정</button>
+                <button id="password-edit-btn" class="drop-down">비밀번호 수정</button>
+                <button id="logout-btn" class="drop-down" onClick="location.href='/users/sign-in'">로그아웃</button>
+
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+    <form action="" method="post" >
+        <div id="subtitle">
+            게시글 작성
+        </div>
+        
+
+
+        <div id="title-input-box">
+            <div id="title-input-text">
+                제목*
+            </div>
+            <input type="text" name="title" placeholder="제목을 입력해주세요.(최대 26글자)" id="title-input">
+        </div>
+
+
+
+
+
+
+
+        <div id="post-input-box">
+            <div id="post-input-text">
+                내용*
+            </div>
+            <textarea type="text" name="post" placeholder="내용을 입력해주세요." id="post-input"></textarea>
+            <div id="helper-text">*helper-text</div>
+        </div>
+
+
+        <div id="image-selection-box">
+            <div id="image-selection-text">
+                이미지
+            </div>
+            <input type="file" id="file-input" name="image" accept="image/*" onchange="addImage(event)">
+            <img id="post-image" src="">
+        </div>
+        
+        <button id="complete-btn">완료</button>
+    </form>
+
+
+    <script type="text/javascript" src="/javascript/add-post.js"></script>
+</body>
+</html>

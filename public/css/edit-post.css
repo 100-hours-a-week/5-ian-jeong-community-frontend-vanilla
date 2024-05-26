@@ -1,0 +1,311 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F4F5F7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    height: 9.6vh;
+    border-bottom: 1px solid #000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#header-box {
+    width: 592px;
+    height: 9.6vh;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+}
+
+#title-text {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    position: absolute;
+}
+
+#back-btn {
+    width: 16px;
+    height: 19px;
+    border: none;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+#back-btn:hover {
+    transform: scale(1.2); 
+}
+
+#profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+
+#profile-img:hover {
+    transform: scale(1.2); 
+}
+
+
+
+
+
+
+#drop-down-box {
+    position: absolute;
+    margin-left: 477px;
+    margin-top: calc(60px + 9.6vh);
+    width: 115px;
+    height: 105px;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    z-index: 1;
+}
+
+#user-edit-btn {
+    width: 115px;
+    height: 35px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
+    background-color: #D9D9D9;
+    border: none;
+}
+
+#user-edit-btn:hover {
+    background-color: #E9E9E9;
+}
+
+#password-edit-btn:hover {
+    background-color: #E9E9E9;
+}
+
+#logout-btn:hover {
+    background-color: #E9E9E9;
+}
+
+#password-edit-btn {
+    width: 115px;
+    height: 35px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
+    background-color: #D9D9D9;
+    border: none;
+}
+
+#logout-btn {
+    width: 115px;
+    height: 35px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
+    background-color: #D9D9D9;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#page-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31.2px;
+    letter-spacing: -0.1px;
+    margin-top: 2.2vh;
+}
+
+
+form {
+    margin-top: 4.7vh;
+    width: 592px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title-edit-box {
+    width: 592px;
+}
+
+#title-edit-text {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20.8px;
+    margin-left: 24px;
+}
+
+#title-input {
+    margin: 0;
+    height: 16px;
+    padding: 24px;
+    width: 544px;
+    border:none;
+    background-color: #F4F5F7;;
+    margin-top: 1.4vh;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22.56px;
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+
+
+
+
+
+
+
+#post-edit-box {
+    margin-top: 2.4vh;
+    width: 592px;
+}
+
+#post-edit-text {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20.8px;
+    margin-left: 24px;
+}
+
+
+
+#post-input {
+    margin-top: 1.4vh;
+    padding: 24px;
+    resize: none;
+    width: 544px;
+    height: 231px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 21.15px;
+    letter-spacing: -1px;
+    border: none;
+    background-color: #F4F5F7;
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+#helper-text {
+    color: #FF0000;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
+    margin-left: 24px;
+    visibility: hidden;
+}
+
+
+
+
+
+#image-selection-box {
+    width: 592px;
+    margin-top: 0.8vh;
+}
+
+#image-selection-text {
+    width: 39px;
+    height: 18px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.9px;
+    margin-left: 24px;
+    margin-bottom: 0.7vh;
+}
+
+#image-selection {
+    margin-top: 0.7vh;
+    margin-left: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.71px;
+    display: none;
+}
+
+#image-label {
+    padding: 5px;
+
+    margin-top: 0.7vh;
+    margin-left: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.71px;
+
+    border-radius: 4px;
+    border: 1px solid #000000;
+
+    background-color: #D9D9D9;
+}
+
+#image-label-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#image-label:hover {
+    background-color: #BDBDBD;
+}
+
+#file-name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.71px;
+    margin-left: 12px;
+    margin-top: 10px;
+}
+
+#image {
+    display: none;
+}
+
+#edit-btn {
+    margin-top: 3vh;
+    width: 355px;
+    height: 33px;
+    background-color: #7F6AEE;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16.71px;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+
+

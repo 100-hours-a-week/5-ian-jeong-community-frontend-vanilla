@@ -163,8 +163,8 @@ async function getUserIdFromSession(result) {
     await fetch(`${BACKEND_IP_PORT}/users/session`, {credentials: 'include'})
         .then(response => response.json())
         .then(user => {
-            if (parseInt(user.result.id) !== 0) {
-                result.id = user.result.id;
+            if (parseInt(user.result) !== 0) {
+                result.id = user.result;
             } else {
                 alert('로그아웃 되었습니다 !');
                 window.location.href = `/users/sign-in`;

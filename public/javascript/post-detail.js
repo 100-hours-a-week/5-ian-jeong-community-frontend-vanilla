@@ -109,11 +109,10 @@ async function init() {
         .then(postJson => {
             postTitle.textContent = postJson.result.title;
                     
-            fetch(`${BACKEND_IP_PORT}/users/${postJson.writer}`) 
+            fetch(`${BACKEND_IP_PORT}/users/${postJson.result.writer}`) 
                 .then(userData => userData.json())
                 .then(userJson => {
                     if (parseInt(userId) !== parseInt(userJson.result.id)) {
-                        console.log(userId, userJson.result.id)
                         editBtn.style.visibility = 'hidden';
                         deleteBtn.style.visibility = 'hidden';
                     }
@@ -388,8 +387,8 @@ async function getUserIdFromSession(result) {
     await fetch(`${BACKEND_IP_PORT}/users/session`, {credentials: 'include'})
         .then(response => response.json())
         .then(user => {
-            if (parseInt(user.result.id) !== 0) {
-                result.id = user.result.id;
+            if (parseInt(user.result) !== 0) {
+                result.id = user.result;
             } else {
                 alert('로그아웃 되었습니다 !');
                 window.location.href = `/users/sign-in`;

@@ -55,7 +55,7 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            profileImg.src = userJson.profileImage;
+            profileImg.src = userJson.result.profileImage;
         });
 
 
@@ -165,8 +165,8 @@ async function getUserIdFromSession(result) {
     await fetch(`${BACKEND_IP_PORT}/users/session`, {credentials: 'include'})
         .then(response => response.json())
         .then(user => {
-            if (parseInt(user.id) !== 0) {
-                result.id = user.id;
+            if (parseInt(user.result.id) !== 0) {
+                result.id = user.result.id;
             } else {
                 alert('로그아웃 되었습니다 !');
                 window.location.href = `/users/sign-in`;

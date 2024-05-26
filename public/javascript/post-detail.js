@@ -73,7 +73,7 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            profileImg.src = userJson.profileImage;
+            profileImg.src = userJson.result.profileImage;
         });
     
 
@@ -107,34 +107,34 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/posts/${postId}`) 
         .then(postData => postData.json()) 
         .then(postJson => {
-            postTitle.textContent = postJson.title;
+            postTitle.textContent = postJson.result.title;
                     
             fetch(`${BACKEND_IP_PORT}/users/${postJson.writer}`) 
                 .then(userData => userData.json())
                 .then(userJson => {
-                    if (parseInt(userId) !== parseInt(userJson.id)) {
-                        console.log(userId, userJson.id)
+                    if (parseInt(userId) !== parseInt(userJson.result.id)) {
+                        console.log(userId, userJson.result.id)
                         editBtn.style.visibility = 'hidden';
                         deleteBtn.style.visibility = 'hidden';
                     }
                     
-                    writer.textContent = userJson.nickname;
-                    postProfileImg.src = userJson.profileImage;
+                    writer.textContent = userJson.result.nickname;
+                    postProfileImg.src = userJson.result.profileImage;
                 });
             
-            time.textContent = postJson.time;
-            postImage.src = postJson.image;
-            postText.textContent = postJson.content;
-            hitsNum.textContent = makeShortNumber(parseInt(postJson.hits + 1));
-            commentsNum.textContent = makeShortNumber(parseInt(postJson.comments));
+            time.textContent = postJson.result.time;
+            postImage.src = postJson.result.image;
+            postText.textContent = postJson.result.content;
+            hitsNum.textContent = makeShortNumber(parseInt(postJson.result.hits + 1));
+            commentsNum.textContent = makeShortNumber(parseInt(postJson.result.comments));
 
 
 
             const obj = {
-                title: postJson.title,
-                content: postJson.content,
-                imageName: postJson.imageName,
-                image: postJson.image,
+                title: postJson.result.title,
+                content: postJson.result.content,
+                imageName: postJson.result.imageName,
+                image: postJson.result.image,
                 hits: hitsNum.textContent
             }
                 
@@ -247,7 +247,7 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/posts/${postId}/comments`) 
         .then(commentsData => commentsData.json())
         .then(commentsJson => {
-            commentsJson.forEach(comment => {
+            commentsJson.result.forEach(comment => {
             
             const commentDiv = document.createElement('div');
             commentDiv.classList.add('comment');
@@ -293,13 +293,13 @@ async function init() {
             fetch(`${BACKEND_IP_PORT}/users/${comment.writer}`) // 댓글 작성자 데이터 가져오기
                 .then(userData => userData.json())
                 .then(userJson => {
-                    if (parseInt(userJson.id) !== parseInt(userId)) {
+                    if (parseInt(userJson.result.id) !== parseInt(userId)) {
                         writerEditBtn.style.visibility = 'hidden';
                         writerDeleteBtn.style.visibility = 'hidden';
                     }
 
-                    writerInfoImg.src = userJson.profileImage;
-                    writerInfoIdDiv.textContent = userJson.nickname;
+                    writerInfoImg.src = userJson.result.profileImage;
+                    writerInfoIdDiv.textContent = userJson.result.nickname;
                 });
             
             writerInfoDiv.appendChild(writerInfoImg);
@@ -319,7 +319,7 @@ async function init() {
             
             writerEditBtn.addEventListener('click', async () => {  
                 addCommentBtn.textContent = "댓글 수정";
-                addCommentBtn.setAttribute("data-id", comment.id);
+                addCommentBtn.setAttribute("data-id", comment.result.id);
                 addCommentBtn.style.backgroundColor = "#7F6AEE";
                 addCommentBtn.disabled = false;
 
@@ -388,8 +388,8 @@ async function getUserIdFromSession(result) {
     await fetch(`${BACKEND_IP_PORT}/users/session`, {credentials: 'include'})
         .then(response => response.json())
         .then(user => {
-            if (parseInt(user.id) !== 0) {
-                result.id = user.id;
+            if (parseInt(user.result.id) !== 0) {
+                result.id = user.result.id;
             } else {
                 alert('로그아웃 되었습니다 !');
                 window.location.href = `/users/sign-in`;

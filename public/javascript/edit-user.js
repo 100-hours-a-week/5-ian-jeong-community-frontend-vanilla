@@ -65,17 +65,17 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            originNickname = userJson.nickname;
-            profileImg.src = userJson.profileImage;
+            originNickname = userJson.result.nickname;
+            profileImg.src = userJson.result.profileImage;
         });
     
     
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            profileImage.src = userJson.profileImage;
-            preview.src = userJson.profileImage;
-            nicknameInput.value = userJson.nickname;
+            profileImage.src = userJson.result.profileImage;
+            preview.src = userJson.result.profileImage;
+            nicknameInput.value = userJson.result.nickname;
         });
 
 
@@ -139,7 +139,7 @@ async function init() {
         if (isCorrectNickname) {
             executeToast();
 
-            await setTimeout(async () => {
+            setTimeout(async () => {
                 editBtn.disabled = 'true';
 
                 const obj = {
@@ -214,8 +214,8 @@ async function getUserIdFromSession(result) {
     await fetch(`${BACKEND_IP_PORT}/users/session`, {credentials: 'include'})
         .then(response => response.json())
         .then(user => {
-            if (parseInt(user.id) !== 0) {
-                result.id = user.id;
+            if (parseInt(user.result.id) !== 0) {
+                result.id = user.result.id;
             } else {
                 alert('로그아웃 되었습니다 !');
                 window.location.href = `/users/sign-in`;

@@ -105,8 +105,8 @@ async function init() {
                 fetch(`${BACKEND_IP_PORT}/users/${post.writer}}`)
                     .then(userData => userData.json())
                     .then(userJson => {
-                            profileImage.src = userJson.profileImage;
-                            writer.textContent = userJson.nickname;
+                            profileImage.src = userJson.result.profileImage;
+                            writer.textContent = userJson.result.nickname;
                         })
 
                 postLogBox.appendChild(like);

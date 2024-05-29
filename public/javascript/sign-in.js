@@ -13,9 +13,8 @@ signInBtn.addEventListener('click', async (event) => {
 
     if (await validateSignIn()) { 
         signInBtn.disabled = true;
-
         setTimeout(() => {
-            signInBtn.style.backgroundColor = '#409344';
+            signInBtn.style.backgroundColor = '#8fce92';
             signInBtn.disabled = false;
             window.location.href = '/posts';
         }, 3000);        
@@ -52,9 +51,9 @@ async function validateSignIn() {
     const flag = {'flag' : false};
 
     await validateAccount(flag, email, password);
-
+    
     if (flag['flag']) {
-        document.getElementById('sign-in-btn').style.backgroundColor = '#7F6AEE';
+        document.getElementById('sign-in-btn').style.backgroundColor = '#409344';
         helperText.style.visibility = 'hidden';
         
         return flag['flag'];
@@ -98,7 +97,7 @@ async function validateAccount(flag, email, password) {
         .then(isAuthenticated => isAuthenticated.json())
         .then(isAuthenticatedJson => {
             console.log(`게정 검증결과: ${isAuthenticatedJson.result}`);
-             if(isAuthenticatedJson.result === "true") {
+             if(isAuthenticatedJson.result === true) {
                 flag['flag'] = true;
              }
         });

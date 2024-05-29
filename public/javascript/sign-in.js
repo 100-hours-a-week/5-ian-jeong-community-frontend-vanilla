@@ -14,7 +14,7 @@ signInBtn.addEventListener('click', async (event) => {
     if (await validateSignIn()) { 
         signInBtn.disabled = true;
 
-        await setTimeout(() => {
+        setTimeout(() => {
             signInBtn.style.backgroundColor = '#ACA0EB';
             signInBtn.disabled = false;
             window.location.href = '/posts';

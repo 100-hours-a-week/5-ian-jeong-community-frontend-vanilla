@@ -27,6 +27,7 @@ let isCorrectNickname = false;
 
 function addImage(event) {
     const file = event.target.files[0];
+    preview.src = "";
     
     if (file) {
         const reader = new FileReader();
@@ -41,7 +42,6 @@ function addImage(event) {
         return;
     } 
 
-    preview.src = "";
     document.getElementById("profile-circle").value = "";
     document.getElementById("profile-helper-text").style.visibility = "visible";
 }
@@ -100,7 +100,7 @@ async function validateDuplicateEmail(email, flag) {
     await fetch(`${BACKEND_IP_PORT}/users/email?email=${email}`)
         .then(isDuplicated => isDuplicated.json())
         .then(isDuplicatedJson => {
-            if (isDuplicatedJson.result === "true") {
+            if (isDuplicatedJson.result === true) {
                 flag['flag'] = true;
             }
        });
@@ -238,7 +238,7 @@ async function validateDuplicateNickname(nickname, flag) {
     await fetch(`${BACKEND_IP_PORT}/users/nickname?nickname=${nickname}`)
         .then(isDuplicated => isDuplicated.json())
         .then(isDuplicatedJson => {
-            if(isDuplicatedJson.result === "true") {
+            if(isDuplicatedJson.result === true) {
                 flag['flag'] = true;
             }
        });
@@ -247,10 +247,10 @@ async function validateDuplicateNickname(nickname, flag) {
 
 function validateAll() {
     if (isCorrectEmail && isCorrectPassword && isCorrectRePassword && isCorrectNickname) {
-        signUpBtn.style.backgroundColor = '#7F6AEE';
+        signUpBtn.style.backgroundColor = '#409344';
         signUpBtn.disabled = false;
     } else {
-        signUpBtn.style.backgroundColor = '#ACA0EB';
+        signUpBtn.style.backgroundColor = '#8fce92';
         signUpBtn.disabled = true;
     }
 }
@@ -266,7 +266,7 @@ signUpBtn.addEventListener('click', async (event) => {
         email : `${emailInput.value}`,
         password: `${passwordInput.value}`,
         nickname: `${nicknameInput.value}`,
-        profileImage: `${preview.src}`
+        image: `${preview.src}`
     }
         
     const data = {

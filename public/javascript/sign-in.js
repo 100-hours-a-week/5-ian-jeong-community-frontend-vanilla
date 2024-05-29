@@ -15,7 +15,7 @@ signInBtn.addEventListener('click', async (event) => {
         signInBtn.disabled = true;
 
         setTimeout(() => {
-            signInBtn.style.backgroundColor = '#ACA0EB';
+            signInBtn.style.backgroundColor = '#409344';
             signInBtn.disabled = false;
             window.location.href = '/posts';
         }, 3000);        

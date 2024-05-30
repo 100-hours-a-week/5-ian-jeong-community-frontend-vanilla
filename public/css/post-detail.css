@@ -1,9 +1,16 @@
+@font-face {
+    font-family: 'Dongle';
+    src: url('/css/Dongle/Dongle-Regular.ttf') format('truetype'); /* 폰트 파일의 경로를 지정합니다. */
+    font-style: normal;
+}
+
 html {
     width: 100%;
     height: 100%;
 }
 
 body {
+    font-family: 'Dongle';
     width: 100%;
     margin: 0;
     padding: 0;
@@ -34,7 +41,7 @@ header {
 
 #title-text {
     font-weight: 400;
-    font-size: 32px;
+    font-size: 52px;
     line-height: 32px;
     position: absolute;
 }
@@ -142,7 +149,7 @@ header {
 
 #post-title {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 34px;
     line-height: 31.2px;
     margin-left: 24px;
 }
@@ -165,13 +172,13 @@ header {
 
 #writer {
     margin-left: 10px;
-    font-size: 15px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 19.5px;
 }
 
 #time {
-    font-size: 14px;
+    font-size: 24px;
     line-height: 18.2px;
     margin-left: 24px;
 }
@@ -222,7 +229,7 @@ header {
 
 #post-text {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 24px;
     width: 533px;
     line-height: 21.15px;
     white-space: pre-wrap;
@@ -268,13 +275,13 @@ header {
 
 .num {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 26px;
 }
 
 .text1 {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 26px;
     line-height: 25.04px;
 }
 
@@ -282,7 +289,7 @@ header {
     width: 28px;
     height: 25px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 26px;
     line-height: 25.04px;
     /* border: 1px solid #000; */
 }
@@ -327,7 +334,7 @@ header {
 #add-comment-btn {
     width: 139px;
     height: 39px;
-    background-color: #ACA0EB;
+    background-color: #8fce92;
     border-radius: 16px;
     border: none;
     color: white;
@@ -343,7 +350,7 @@ header {
 #edit-comment-btn {
     width: 139px;
     height: 39px;
-    background-color: #ACA0EB;
+    background-color: #8fce92;
     border-radius: 16px;
     border: none;
     color: white;
@@ -470,14 +477,14 @@ header {
 
 #modal-text1 {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 34px;
     line-height: 28.64px;
     margin-top: 48px;
 }
 
 #modal-text2 {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 23.87px;
     margin-top: 24px;
 }
@@ -507,7 +514,7 @@ header {
 #modal-delete {
     width: 127px;
     height: 44px;
-    background-color: #C4A5FA;
+    background-color: #409344;
     color: #000000;
     font-weight: 400;
     font-size: 20px;
@@ -547,14 +554,14 @@ header {
 
 #comment-modal-text1 {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 34px;
     line-height: 28.64px;
     margin-top: 48px;
 }
 
 #comment-modal-text2 {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 23.87px;
     margin-top: 24px;
 }
@@ -584,7 +591,7 @@ header {
 #comment-modal-delete {
     width: 127px;
     height: 44px;
-    background-color: #C4A5FA;
+    background-color: #409344;
     color: #000000;
     font-weight: 400;
     font-size: 20px;

@@ -73,7 +73,7 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            profileImg.src = userJson.result.profileImage;
+            profileImg.src = userJson.result.image;
         });
     
 
@@ -106,10 +106,9 @@ async function init() {
 
     await fetch(`${BACKEND_IP_PORT}/posts/${postId}`) 
         .then(postData => postData.json()) 
-        .then(postJson => {
-            postTitle.textContent = postJson.result.title;
-                    
-            fetch(`${BACKEND_IP_PORT}/users/${postJson.result.writer}`) 
+        .then(async (postJson) => {
+            postTitle.textContent = postJson.post.title;
+            await fetch(`${BACKEND_IP_PORT}/users/${postJson.post.user_id}`) 
                 .then(userData => userData.json())
                 .then(userJson => {
                     if (parseInt(userId) !== parseInt(userJson.result.id)) {
@@ -118,44 +117,106 @@ async function init() {
                     }
                     
                     writer.textContent = userJson.result.nickname;
-                    postProfileImg.src = userJson.result.profileImage;
+                    postProfileImg.src = userJson.result.image;
                 });
             
-            time.textContent = postJson.result.time;
-            postImage.src = postJson.result.image;
-            postText.textContent = postJson.result.content;
-            hitsNum.textContent = makeShortNumber(parseInt(postJson.result.hits + 1));
-            commentsNum.textContent = makeShortNumber(parseInt(postJson.result.comments));
+            time.textContent = postJson.post.created_at;
+            postImage.src = postJson.post.image;
+            postText.textContent = postJson.post.content;
+            hitsNum.textContent = makeShortNumber(parseInt(postJson.post.view_count));
+            commentsNum.textContent = makeShortNumber(parseInt(postJson.post.comment_count));
 
+            postJson.comments.forEach(comment => {
 
-
-            const obj = {
-                title: postJson.result.title,
-                content: postJson.result.content,
-                imageName: postJson.result.imageName,
-                image: postJson.result.image,
-                hits: hitsNum.textContent
-            }
-                
-            const data = {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(obj)
-            }
-        
-            fetch(`${BACKEND_IP_PORT}/posts/${postId}`, data)
-                .then(response => {
-                if (response.status === 204) {
-                    console.log('조회수 업데이트 성공');
-                } else {
-                    console.log('조회수 업데이트 실패');
-                }
-              })
-              .catch(error => {
-                console.error('fetch error:', error);
-              });
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.id = comment.id;
+                        
+                const writerInfoBoxDiv = document.createElement('div');
+                writerInfoBoxDiv.classList.add('writer-info-box');
+                        
+                const writerInfoDiv = document.createElement('div');
+                writerInfoDiv.classList.add('writer-info');
+                        
+                const writerInfoImg = document.createElement('img');
+                writerInfoImg.classList.add('writer-info-img');
+                                
+                const writerInfoIdDiv = document.createElement('div');
+                writerInfoIdDiv.classList.add('writer-info-id');
+                        
+                                
+                const writerInfoTimeDiv = document.createElement('div');
+                writerInfoTimeDiv.classList.add('writer-info-time');
+                writerInfoTimeDiv.textContent = comment.created_at;
+                        
+                const contentInput = document.createElement('input');
+                contentInput.classList.add('content-info');
+                contentInput.type = 'text';
+                contentInput.value = comment.content;
+                contentInput.readOnly = true;
+                        
+                const btnInfoDiv = document.createElement('div');
+                btnInfoDiv.classList.add('btn-info');
+                        
+                const writerEditBtn = document.createElement('button');
+                writerEditBtn.classList.add('writer-edit-btn');
+                writerEditBtn.textContent = '수정';
+                        
+                const writerDeleteBtn = document.createElement('button');
+                writerDeleteBtn.classList.add('writer-delete-btn');
+                writerDeleteBtn.textContent = '삭제';
+                        
+                fetch(`${BACKEND_IP_PORT}/users/${comment.user_id}`) // 댓글 작성자 데이터 가져오기
+                    .then(userData => userData.json())
+                    .then(userJson => {
+                        if (parseInt(userJson.result.id) !== parseInt(userId)) {
+                            writerEditBtn.style.visibility = 'hidden';
+                            writerDeleteBtn.style.visibility = 'hidden';
+                        }
+            
+                        writerInfoImg.src = userJson.result.image;
+                        writerInfoIdDiv.textContent = userJson.result.nickname;
+                    });
+                        
+                writerInfoDiv.appendChild(writerInfoImg);
+                writerInfoDiv.appendChild(writerInfoIdDiv);
+                writerInfoDiv.appendChild(writerInfoTimeDiv);
+                        
+                writerInfoBoxDiv.appendChild(writerInfoDiv);
+                writerInfoBoxDiv.appendChild(contentInput);
+                        
+                btnInfoDiv.appendChild(writerEditBtn);
+                btnInfoDiv.appendChild(writerDeleteBtn);
+                        
+                commentDiv.appendChild(writerInfoBoxDiv);
+                commentDiv.appendChild(btnInfoDiv);
+                                
+                writerEditBtn.addEventListener('click', async () => {  
+                    addCommentBtn.textContent = "댓글 수정";
+                    addCommentBtn.setAttribute("data-id", comment.result.id);
+                    addCommentBtn.style.backgroundColor = "#409344";
+                    addCommentBtn.disabled = false;
+            
+                    commentInput.value = contentInput.value;
+                });
+                        
+                        
+                writerDeleteBtn.addEventListener('click', () => {
+                    writerDeleteBtn.addEventListener('click', (event) => {
+                        const modalBack = document.getElementById("modal-back");
+                        modalBack.style.visibility = "visible";
+                                
+                        const commentModal = document.getElementById("comment-modal");
+                        commentModal.style.visibility = "visible";
+                        commentModal.setAttribute("data-id", comment.id);
+                                
+                        document.body.style.overflow = "hidden";
+                    });
+                });
+                        
+                        
+                document.body.appendChild(commentDiv);
+            })
         });
 
         
@@ -163,10 +224,10 @@ async function init() {
         const value = event.target.value;
 
         if(value) {
-            addCommentBtn.style.backgroundColor = "#7F6AEE";
+            addCommentBtn.style.backgroundColor = "#409344";
             addCommentBtn.disabled = false;
         } else {
-            addCommentBtn.style.backgroundColor = "#ACA0EB";
+            addCommentBtn.style.backgroundColor = "#8fce92";
             addCommentBtn.disabled = true;
         }
     });
@@ -243,106 +304,106 @@ async function init() {
 
 
 
-    await fetch(`${BACKEND_IP_PORT}/posts/${postId}/comments`) 
-        .then(commentsData => commentsData.json())
-        .then(commentsJson => {
-            commentsJson.result.forEach(comment => {
+    // await fetch(`${BACKEND_IP_PORT}/posts/${postId}/comments`) 
+    //     .then(commentsData => commentsData.json())
+    //     .then(commentsJson => {
+    //         commentsJson.result.forEach(comment => {
             
-            const commentDiv = document.createElement('div');
-            commentDiv.classList.add('comment');
-            commentDiv.id = comment.id;
+    //         const commentDiv = document.createElement('div');
+    //         commentDiv.classList.add('comment');
+    //         commentDiv.id = comment.id;
             
-            const writerInfoBoxDiv = document.createElement('div');
-            writerInfoBoxDiv.classList.add('writer-info-box');
+    //         const writerInfoBoxDiv = document.createElement('div');
+    //         writerInfoBoxDiv.classList.add('writer-info-box');
             
-            const writerInfoDiv = document.createElement('div');
-            writerInfoDiv.classList.add('writer-info');
+    //         const writerInfoDiv = document.createElement('div');
+    //         writerInfoDiv.classList.add('writer-info');
             
-            const writerInfoImg = document.createElement('img');
-            writerInfoImg.classList.add('writer-info-img');
-            
-            
-            const writerInfoIdDiv = document.createElement('div');
-            writerInfoIdDiv.classList.add('writer-info-id');
+    //         const writerInfoImg = document.createElement('img');
+    //         writerInfoImg.classList.add('writer-info-img');
             
             
+    //         const writerInfoIdDiv = document.createElement('div');
+    //         writerInfoIdDiv.classList.add('writer-info-id');
             
             
-            const writerInfoTimeDiv = document.createElement('div');
-            writerInfoTimeDiv.classList.add('writer-info-time');
-            writerInfoTimeDiv.textContent = comment.time;
             
-            const contentInput = document.createElement('input');
-            contentInput.classList.add('content-info');
-            contentInput.type = 'text';
-            contentInput.value = comment.text;
-            contentInput.readOnly = true;
             
-            const btnInfoDiv = document.createElement('div');
-            btnInfoDiv.classList.add('btn-info');
+    //         const writerInfoTimeDiv = document.createElement('div');
+    //         writerInfoTimeDiv.classList.add('writer-info-time');
+    //         writerInfoTimeDiv.textContent = comment.time;
             
-            const writerEditBtn = document.createElement('button');
-            writerEditBtn.classList.add('writer-edit-btn');
-            writerEditBtn.textContent = '수정';
+    //         const contentInput = document.createElement('input');
+    //         contentInput.classList.add('content-info');
+    //         contentInput.type = 'text';
+    //         contentInput.value = comment.text;
+    //         contentInput.readOnly = true;
             
-            const writerDeleteBtn = document.createElement('button');
-            writerDeleteBtn.classList.add('writer-delete-btn');
-            writerDeleteBtn.textContent = '삭제';
+    //         const btnInfoDiv = document.createElement('div');
+    //         btnInfoDiv.classList.add('btn-info');
             
-            fetch(`${BACKEND_IP_PORT}/users/${comment.writer}`) // 댓글 작성자 데이터 가져오기
-                .then(userData => userData.json())
-                .then(userJson => {
-                    if (parseInt(userJson.result.id) !== parseInt(userId)) {
-                        writerEditBtn.style.visibility = 'hidden';
-                        writerDeleteBtn.style.visibility = 'hidden';
-                    }
+    //         const writerEditBtn = document.createElement('button');
+    //         writerEditBtn.classList.add('writer-edit-btn');
+    //         writerEditBtn.textContent = '수정';
+            
+    //         const writerDeleteBtn = document.createElement('button');
+    //         writerDeleteBtn.classList.add('writer-delete-btn');
+    //         writerDeleteBtn.textContent = '삭제';
+            
+    //         fetch(`${BACKEND_IP_PORT}/users/${comment.writer}`) // 댓글 작성자 데이터 가져오기
+    //             .then(userData => userData.json())
+    //             .then(userJson => {
+    //                 if (parseInt(userJson.result.id) !== parseInt(userId)) {
+    //                     writerEditBtn.style.visibility = 'hidden';
+    //                     writerDeleteBtn.style.visibility = 'hidden';
+    //                 }
 
-                    writerInfoImg.src = userJson.result.profileImage;
-                    writerInfoIdDiv.textContent = userJson.result.nickname;
-                });
+    //                 writerInfoImg.src = userJson.result.profileImage;
+    //                 writerInfoIdDiv.textContent = userJson.result.nickname;
+    //             });
             
-            writerInfoDiv.appendChild(writerInfoImg);
-            writerInfoDiv.appendChild(writerInfoIdDiv);
-            writerInfoDiv.appendChild(writerInfoTimeDiv);
+    //         writerInfoDiv.appendChild(writerInfoImg);
+    //         writerInfoDiv.appendChild(writerInfoIdDiv);
+    //         writerInfoDiv.appendChild(writerInfoTimeDiv);
             
-            writerInfoBoxDiv.appendChild(writerInfoDiv);
-            writerInfoBoxDiv.appendChild(contentInput);
+    //         writerInfoBoxDiv.appendChild(writerInfoDiv);
+    //         writerInfoBoxDiv.appendChild(contentInput);
             
-            btnInfoDiv.appendChild(writerEditBtn);
-            btnInfoDiv.appendChild(writerDeleteBtn);
+    //         btnInfoDiv.appendChild(writerEditBtn);
+    //         btnInfoDiv.appendChild(writerDeleteBtn);
             
-            commentDiv.appendChild(writerInfoBoxDiv);
-            commentDiv.appendChild(btnInfoDiv);
+    //         commentDiv.appendChild(writerInfoBoxDiv);
+    //         commentDiv.appendChild(btnInfoDiv);
             
             
             
-            writerEditBtn.addEventListener('click', async () => {  
-                addCommentBtn.textContent = "댓글 수정";
-                addCommentBtn.setAttribute("data-id", comment.result.id);
-                addCommentBtn.style.backgroundColor = "#7F6AEE";
-                addCommentBtn.disabled = false;
+    //         writerEditBtn.addEventListener('click', async () => {  
+    //             addCommentBtn.textContent = "댓글 수정";
+    //             addCommentBtn.setAttribute("data-id", comment.result.id);
+    //             addCommentBtn.style.backgroundColor = "#7F6AEE";
+    //             addCommentBtn.disabled = false;
 
-                commentInput.value = contentInput.value;
-            });
+    //             commentInput.value = contentInput.value;
+    //         });
             
             
-            writerDeleteBtn.addEventListener('click', () => {
-                writerDeleteBtn.addEventListener('click', (event) => {
-                    const modalBack = document.getElementById("modal-back");
-                    modalBack.style.visibility = "visible";
+    //         writerDeleteBtn.addEventListener('click', () => {
+    //             writerDeleteBtn.addEventListener('click', (event) => {
+    //                 const modalBack = document.getElementById("modal-back");
+    //                 modalBack.style.visibility = "visible";
                     
-                    const commentModal = document.getElementById("comment-modal");
-                    commentModal.style.visibility = "visible";
-                    commentModal.setAttribute("data-id", comment.id);
+    //                 const commentModal = document.getElementById("comment-modal");
+    //                 commentModal.style.visibility = "visible";
+    //                 commentModal.setAttribute("data-id", comment.id);
                     
-                    document.body.style.overflow = "hidden";
-                });
-            });
+    //                 document.body.style.overflow = "hidden";
+    //             });
+    //         });
             
             
-            document.body.appendChild(commentDiv);
-        })
-    });
+    //         document.body.appendChild(commentDiv);
+    //     })
+    // });
 
     const padding = document.createElement('div');
     padding.classList.add('padding');

@@ -196,9 +196,21 @@ async function init() {
     });
 
     const modalDelete = document.getElementById("modal-delete");
-    modalDelete.addEventListener('click', (event) => {
+    modalDelete.addEventListener('click', async (event) => {
         event.preventDefault()
         
+        await fetch(`${BACKEND_IP_PORT}/users/${userId}`, {method: 'DELETE', credentials: 'include'})
+        .then(response => {
+            if (response.status === 204) {
+                alert('회원탈퇴 되었습니다 !');
+                window.location.href = '/users/sign-in';
+
+            } else {
+                alert('회원탈퇴 실패!');
+                window.location.href = `/users/${userId}`;
+
+            }
+        });
         
     });
 }

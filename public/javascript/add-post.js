@@ -69,7 +69,7 @@ async function init() {
         if (title.length > 26) {
             titleInput.value = title.slice(0, 26);
         }
-
+        
         if (title && post) {
             completeBtn.style.backgroundColor = '#409344';
             helperText.style.visibility = "hidden";

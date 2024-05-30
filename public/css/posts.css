@@ -175,7 +175,7 @@ header {
     height: 39px;
 
     border-radius: 16px;
-    background-color: #ACA0EB;
+    background-color: #8fce92;
     border: none;
 
     font-size: 16px;
@@ -188,9 +188,9 @@ header {
 }
 
 #add-btn:hover {
-    background-color: #7F6AEE;
+    background-color: #409344;
 
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 
@@ -211,6 +211,28 @@ header {
 
     cursor: pointer;
     transition: transform 0.5s ease;
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 100%;
+        background: #8fce92;
+        z-index: -1;
+        transition: width 150ms ease-in-out;
+        border-radius: 16px;
+      }
+      
+      &:hover {
+        color: #fff;
+        &:after {
+          width: 100%;
+        }
+      }
 }
 
 .post-box:hover {

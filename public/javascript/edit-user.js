@@ -4,6 +4,7 @@ BACKEND_IP_PORT = localStorage.getItem('backend-ip-port');
 
 
 const profileImg = document.getElementById("profile-img");
+const email = document.getElementById("email");
 const dropBox = document.getElementById("drop-down-box");
 const userEditBtn = document.getElementById('user-edit-btn')
 const passwordEditBtn = document.getElementById('password-edit-btn');
@@ -65,18 +66,13 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
+            email.textContent = userJson.result.email;
             originNickname = userJson.result.nickname;
-            profileImg.src = userJson.result.profileImage;
-        });
-    
-    
-    await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
-        .then(userData => userData.json())
-        .then(userJson => {
-            profileImage.src = userJson.result.profileImage;
-            preview.src = userJson.result.profileImage;
+            profileImg.src = userJson.result.image;
+            preview.src = userJson.result.image;
             nicknameInput.value = userJson.result.nickname;
         });
+    
 
 
 
@@ -89,21 +85,21 @@ async function init() {
             helperText.textContent = "*닉네임을 입력해주세요.";   
             helperText.style.color = "#FF0000";
             isCorrectNickname = false;
-            editBtn.style.backgroundColor = "#ACA0EB";
+            editBtn.style.backgroundColor = "#8fce92";
 
         } else if (value.search(/\s/) != -1) { 
             helperText.style.visibility = "visible";
             helperText.textContent = "*띄어쓰기를 업애주세요.";
             helperText.style.color = "#FF0000";
             isCorrectNickname = false;
-            editBtn.style.backgroundColor = "#ACA0EB";
+            editBtn.style.backgroundColor = "#8fce92";
 
         } else if (value.length > 11) { 
             helperText.style.visibility = "visible";
             helperText.textContent = "*닉네임은 최대 10자 까지 작성 가능합니다.";
             helperText.style.color = "#FF0000";
             isCorrectNickname = false;
-            editBtn.style.backgroundColor = "#ACA0EB";
+            editBtn.style.backgroundColor = "#8fce92";
 
         } else {
             const flag = {'flag' : false};
@@ -118,12 +114,12 @@ async function init() {
                 helperText.style.visibility = "visible";
                 helperText.textContent = "*중복된 닉네임 입니다.";
                 helperText.style.color = "#FF0000";
-                editBtn.style.backgroundColor = "#ACA0EB";
+                editBtn.style.backgroundColor = "#8fce92";
                 isCorrectNickname = false;
             
             } else {
                 isCorrectNickname = true;
-                editBtn.style.backgroundColor = "#7F6AEE";
+                editBtn.style.backgroundColor = "#409344";
                 helperText.style.visibility = "visible";
                 helperText.textContent = "*사용가능한 닉네임입니다.";
                 helperText.style.color = "#0040FF";
@@ -144,7 +140,7 @@ async function init() {
 
                 const obj = {
                     nickname : nicknameInput.value,
-                    profileImage: preview.src
+                    image: preview.src
                 }
                     
                 const data = {
@@ -245,7 +241,7 @@ async function validateDuplicateNickname(nickname, flag) {
     await fetch(`${BACKEND_IP_PORT}/users/nickname?nickname=${nickname}`)
         .then(isDuplicated => isDuplicated.json())
         .then(isDuplicatedJson => {
-            if(isDuplicatedJson.result === "true") {
+            if(isDuplicatedJson.result === true) {
                 flag['flag'] = true;
             }
        });

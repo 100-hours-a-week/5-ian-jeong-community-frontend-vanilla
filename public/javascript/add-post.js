@@ -58,7 +58,7 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            profileImg.src = userJson.result.profileImage;
+            profileImg.src = userJson.result.image;
         })
     
     
@@ -71,10 +71,10 @@ async function init() {
         }
 
         if (title && post) {
-            completeBtn.style.backgroundColor = '#7F6AEE';
+            completeBtn.style.backgroundColor = '#409344';
             helperText.style.visibility = "hidden";
         } else {
-            completeBtn.style.backgroundColor = '#ACA0EB';        
+            completeBtn.style.backgroundColor = '#8fce92';        
         }
     });
 
@@ -83,10 +83,10 @@ async function init() {
         const post = postInput.value;
 
         if (title && post) {
-            completeBtn.style.backgroundColor = '#7F6AEE';
+            completeBtn.style.backgroundColor = '#409344';
             helperText.style.visibility = "hidden";
         } else {
-            completeBtn.style.backgroundColor = '#ACA0EB';       
+            completeBtn.style.backgroundColor = '#8fce92';       
         }
     });
 
@@ -107,7 +107,7 @@ async function init() {
 
         } else { 
             const obj = {
-                writer : userId,
+                userId : userId,
                 title: title,
                 content: post,
                 imageName: file,
@@ -148,9 +148,9 @@ async function init() {
 async function getUserIdFromSession(result) {
     await fetch(`${BACKEND_IP_PORT}/users/session`, {credentials: 'include'})
         .then(response => response.json())
-        .then(user => {
-            if (parseInt(user.result.id) !== 0) {
-                result.id = user.result.id;
+        .then(responseJson => {
+            if (parseInt(responseJson.result) !== 0) {
+                result.id = responseJson.result;
             } else {
                 alert('로그아웃 되었습니다 !');
                 window.location.href = `/users/sign-in`;

@@ -45,13 +45,13 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`) 
         .then(userData => userData.json())
         .then(userJson => {
-            profileImg.src = userJson.result.profileImage;
+            profileImg.src = userJson.result.image;
         });
 
     await fetch(`${BACKEND_IP_PORT}/posts`)
         .then(postsData => postsData.json())
         .then(postsJson => {
-            postsJson.result.reverse().forEach(post => {
+            postsJson.result.forEach(post => {
                 const postBox = document.createElement('div');
                 postBox.classList.add('post-box');
                     
@@ -96,16 +96,16 @@ async function init() {
                     postTitle.textContent = post.title;
                 }
 
-                like.textContent = `좋아요 ${makeShortNumber(post.likes)}`;
-                comment.textContent = `댓글 ${makeShortNumber(post.comments)}`;
-                hits.textContent = `조회수 ${makeShortNumber(post.hits)}`;
+                like.textContent = `좋아요 ${makeShortNumber(post.like_count)}`;
+                comment.textContent = `댓글 ${makeShortNumber(post.comment_count)}`;
+                hits.textContent = `조회수 ${makeShortNumber(post.view_count)}`;
 
-                time.textContent = post.time;
+                time.textContent = post.created_at;
                     
-                fetch(`${BACKEND_IP_PORT}/users/${post.writer}}`)
+                fetch(`${BACKEND_IP_PORT}/users/${post.user_id}}`)
                     .then(userData => userData.json())
                     .then(userJson => {
-                            profileImage.src = userJson.result.profileImage;
+                            profileImage.src = userJson.result.image;
                             writer.textContent = userJson.result.nickname;
                         })
 

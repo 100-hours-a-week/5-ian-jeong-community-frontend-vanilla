@@ -193,7 +193,7 @@ async function init() {
                                 
                 writerEditBtn.addEventListener('click', async () => {  
                     addCommentBtn.textContent = "댓글 수정";
-                    addCommentBtn.setAttribute("data-id", comment.result.id);
+                    addCommentBtn.setAttribute("data-id", comment.id);
                     addCommentBtn.style.backgroundColor = "#409344";
                     addCommentBtn.disabled = false;
             

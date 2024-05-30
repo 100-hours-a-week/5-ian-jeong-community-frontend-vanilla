@@ -62,7 +62,7 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            profileImg.src = userJson.result.profileImage;
+            profileImg.src = userJson.result.image;
         });
 
 
@@ -75,10 +75,10 @@ async function init() {
         }
 
         if (title && post) {
-            editBtn.style.backgroundColor = '#7F6AEE';
+            editBtn.style.backgroundColor = '#409344';
             helperText.style.visibility = "hidden";
         } else {
-            editBtn.style.backgroundColor = '#ACA0EB';        
+            editBtn.style.backgroundColor = '#8fce92';        
         }
     });
 
@@ -87,10 +87,10 @@ async function init() {
         const post = postInput.value;
 
         if (title && post) {
-            editBtn.style.backgroundColor = '#7F6AEE';
+            editBtn.style.backgroundColor = '#409344';
             helperText.style.visibility = "hidden";
         } else {
-            editBtn.style.backgroundColor = '#ACA0EB';       
+            editBtn.style.backgroundColor = '#8fce92';       
         }
     });
 
@@ -98,11 +98,10 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/posts/${postId}`)
         .then(postData => postData.json())
         .then(postJson => {
-            titleInput.value = postJson.result.title;
-            
-            postInput.value = postJson.result.content;
-            fileName.textContent = postJson.result.imageName;
-            image.src = postJson.result.image;
+            titleInput.value = postJson.post.title;
+            postInput.value = postJson.post.content;
+            fileName.textContent = postJson.post.imageName;
+            image.src = postJson.post.image;
     });
 
 
@@ -124,7 +123,6 @@ async function init() {
                 content: post,
                 imageName: imageName,
                 image: imageUrl,
-                hits: post.hits
             }
                 
             const data = {

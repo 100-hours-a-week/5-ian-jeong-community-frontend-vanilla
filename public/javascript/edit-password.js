@@ -55,7 +55,7 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/users/${userId}`)
         .then(userData => userData.json())
         .then(userJson => {
-            profileImg.src = userJson.result.profileImage;
+            profileImg.src = userJson.result.image;
         });
 
 
@@ -68,12 +68,14 @@ async function init() {
             passwordHelper.style.visibility = "visible";
             passwordHelper.textContent = "*비밀번호를 입력해주세요";
             passwordHelper.style.color = "#FF0000";
+            editBtn.style.backgroundColor = "#8fce92";
             isCorrectPassword = false;
 
         } else if(!validatePasswordFormat(value)) { 
             passwordHelper.style.visibility = "visible";
             passwordHelper.textContent = "*비밀번호는 8자 이상, 20자 이하이며, 대문자, 소문자, 숫자, 특수문자를 각각 최소 1개 포합해야 합니다.";
             passwordHelper.style.color = "#FF0000";
+            editBtn.style.backgroundColor = "#8fce92";
             isCorrectPassword = false;
 
         } else {
@@ -121,7 +123,7 @@ async function init() {
         if (isCorrectPassword && isCorrectRePassword) {
             executeToast();
             
-            await setTimeout(async () => {
+            setTimeout(async () => {
                 editBtn.disabled = 'true';
 
                 const obj = {
@@ -199,10 +201,10 @@ function executeToast() {
 
 function validateAll() {
     if (isCorrectPassword && isCorrectRePassword) {
-        editBtn.style.backgroundColor = '#7F6AEE';
+        editBtn.style.backgroundColor = "#409344"
         editBtn.disabled = false;
     } else {
-        editBtn.style.backgroundColor = '#ACA0EB';
+        editBtn.style.backgroundColor = "#8fce92"
         editBtn.disabled = true;
     }
 }

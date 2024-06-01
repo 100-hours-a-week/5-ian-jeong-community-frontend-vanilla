@@ -12,7 +12,7 @@
         <div id="title-text">One Day One Post</div>
         <div id="header-box">
 
-            <img id="back-btn" src="/images/navi.png" alt="back" onClick="location.href='/posts'">
+            <img id="back-btn" src="/images/open-door.png" alt="back" onClick="location.href='/posts'">
             <img id="profile-img" src="" alt="profile-image">
 
             <div id="drop-down-box">
@@ -25,51 +25,56 @@
         </div>
     </header>
 
+    <div id="post-detail-whole">
 
+        <section id="post-title-section">
+            <div id="post-title">제목 1</div>
 
-    <section id="post-title-section">
-        <div id="post-title">제목 1</div>
+            
+            <div id="down">
+                <img id="post-profile-img" src="">
+                <div id="writer"></div>
+                <div id="time"></div>
+                <button id="edit-btn">수정</button>
+                <button id="delete-btn">삭제</button>
+            </div>
+        </section>
+        
 
         
-        <div id="down">
-            <img id="post-profile-img" src="">
-            <div id="writer"></div>
-            <div id="time"></div>
-            <button id="edit-btn">수정</button>
-            <button id="delete-btn">삭제</button>
-        </div>
-    </section>
-    
-    <img id="post-img" src="">
+        <img id="post-img" src="">
+        
 
-    <section id="post-text"></section>
+        <section id="post-text"></section>
 
-    <section id="count-box">
-        <div id="hits">
-            <div class="num" id="hits-num"></div>
-            <div class="text1">
-                조회수
+        <section id="count-box">
+            <div id="hits">
+                <div class="num" id="hits-num"></div>
+                <div class="text1">
+                    조회수
+                </div>
             </div>
-        </div>
 
-        <div id="coments">
-            <div class="num" id="comments-num"></div>
-            <div class="text2">
-                댓글
+            <div id="coments">
+                <div class="num" id="comments-num"></div>
+                <div class="text2">
+                    댓글
+                </div>
             </div>
+        </section>
+
+
+        <svg viewBox="0 0 1200 200">
+            <path id="wave" d="M0 100 Q 150 50 300 100 T 600 100 T 900 100 T 1200 100 V 200 H 0 Z"></path>
+        </svg>
+
+
+
+        <textarea id="comment-input" placeholder="댓글을 남겨주세요!"></textarea>
+
+        <div id="add-comment-box">
+            <button id="add-comment-btn" disabled="false">댓글 등록</button>
         </div>
-    </section>
-
-
-    <hr id="line1"/>
-
-
-
-    <textarea id="comment-input" placeholder="댓글을 남겨주세요!"></textarea>
-
-    <div id="add-comment-box">
-        <button id="add-comment-btn" disabled="false">댓글 등록</button>
-    </div>
 
 
 
@@ -104,7 +109,7 @@
     </div> -->
     
 
-    
+    </div>
 
 
 

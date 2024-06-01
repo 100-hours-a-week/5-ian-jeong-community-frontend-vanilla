@@ -194,7 +194,7 @@ async function init() {
                 writerEditBtn.addEventListener('click', async () => {  
                     addCommentBtn.textContent = "댓글 수정";
                     addCommentBtn.setAttribute("data-id", comment.id);
-                    addCommentBtn.style.backgroundColor = "#409344";
+                    addCommentBtn.style.backgroundColor = "#7cc08c";
                     addCommentBtn.disabled = false;
             
                     commentInput.value = contentInput.value;
@@ -214,8 +214,7 @@ async function init() {
                     });
                 });
                         
-                        
-                document.body.appendChild(commentDiv);
+                document.getElementById('post-detail-whole').appendChild(commentDiv);
             })
         });
 
@@ -224,10 +223,10 @@ async function init() {
         const value = event.target.value;
 
         if(value) {
-            addCommentBtn.style.backgroundColor = "#409344";
+            addCommentBtn.style.backgroundColor = "#7cc08c";
             addCommentBtn.disabled = false;
         } else {
-            addCommentBtn.style.backgroundColor = "#8fce92";
+            addCommentBtn.style.backgroundColor = "#8a9f8f";
             addCommentBtn.disabled = true;
         }
     });

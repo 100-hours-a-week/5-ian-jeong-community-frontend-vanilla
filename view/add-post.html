@@ -8,9 +8,9 @@
 </head>
 <body>
     <header>
-        <div id="title-text">One day One Post</div>
+        <div id="title-text">One Day One Post</div>
         <div id="header-box">
-            <img id="back-btn" src="/images/navi.png" alt="back">
+            <img id="back-btn" src="/images/open-door.png" alt="back">
             <img id="profile-img" src="" alt="profile-image">
 
             <div id="drop-down-box">
@@ -25,48 +25,59 @@
     </header>
 
 
-
-
-
-    <form action="" method="post" >
-        <div id="subtitle">
-            게시글 작성
-        </div>
+    
+    <div id="add-post-box">
+    
+        <form action="" method="post" >
         
+            <div id="subtitle"> 게시글 작성</div>
 
-
-        <div id="title-input-box">
-            <div id="title-input-text">
-                제목*
+            <div id="title-input-box">
+                <div id="title-input-text">제목*</div>
+                <input type="text" name="title" placeholder="제목을 입력해주세요.(최대 26글자)" id="title-input">
             </div>
-            <input type="text" name="title" placeholder="제목을 입력해주세요.(최대 26글자)" id="title-input">
+
+            <div id="post-input-box">
+                <div id="post-input-text">내용*</div>
+                <textarea type="text" name="post" placeholder="내용을 입력해주세요." id="post-input"></textarea>
+                <div id="helper-text">*helper-text</div>
+            </div>
+
+
+            <div id="image-selection-box">
+                <div id="image-selection-text">이미지</div>
+                <input type="file" id="file-input" name="image" accept="image/*" onchange="addImage(event)">
+                <img id="post-image" src="">
+            </div>
+            
+            <button id="complete-btn">완료</button>
+        </form>
+
+
+
+
+        <div id="preview-box">
+
+            <div id="preview-box-title-box">
+                <div id="preview-box-title">미리보기</div>
+            </div>
+
+
+            <div id="post-preview">
+                <div id="post-preview-title"></div> 
+                <img id="post-preview-image" src="" alt=" 이미지없음"></img>
+                <div id="post-preview-content"></div>  
+            </div>
+
         </div>
 
 
 
+    </div>
+
+    
 
 
-
-
-        <div id="post-input-box">
-            <div id="post-input-text">
-                내용*
-            </div>
-            <textarea type="text" name="post" placeholder="내용을 입력해주세요." id="post-input"></textarea>
-            <div id="helper-text">*helper-text</div>
-        </div>
-
-
-        <div id="image-selection-box">
-            <div id="image-selection-text">
-                이미지
-            </div>
-            <input type="file" id="file-input" name="image" accept="image/*" onchange="addImage(event)">
-            <img id="post-image" src="">
-        </div>
-        
-        <button id="complete-btn">완료</button>
-    </form>
 
 
     <script type="text/javascript" src="/javascript/add-post.js"></script>

@@ -26,37 +26,7 @@ body {
 }
 
 
-#header-box {
-    width: 592px;
-    height: 9.6vh;
 
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content: space-between;
-}
-
-
-#back-btn {
-    width: 16px;
-    height: 19px;
-
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-#back-btn:hover {
-    transform: scale(1.2); 
-}
-
-
-#title-text {
-    font-weight: 400;
-    font-size: 52px;
-    line-height: 32px;
-    position: absolute;
-}
 
 
 #sign-up-form {

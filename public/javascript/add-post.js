@@ -14,6 +14,10 @@ const postImage = document.getElementById("post-image");
 const completeBtn = document.getElementById("complete-btn");
 const helperText = document.getElementById("helper-text");
 
+const postPreviewTitle = document.getElementById("post-preview-title");
+const postPreviewImage = document.getElementById("post-preview-image");
+const postPreviewContent = document.getElementById("post-preview-content");
+
 
 
 init()
@@ -65,28 +69,31 @@ async function init() {
     titleInput.addEventListener("input", (event) => {
         const title = titleInput.value;
         const post = postInput.value;
+        postPreviewTitle.textContent = titleInput.value; 
         
         if (title.length > 26) {
             titleInput.value = title.slice(0, 26);
+            postPreviewTitle.textContent = titleInput.value; 
         }
         
         if (title && post) {
-            completeBtn.style.backgroundColor = '#409344';
+            completeBtn.style.backgroundColor = '#748578';
             helperText.style.visibility = "hidden";
         } else {
-            completeBtn.style.backgroundColor = '#8fce92';        
+            completeBtn.style.backgroundColor = '#8a9f8f';        
         }
     });
 
     postInput.addEventListener('input', () => {
         const title = titleInput.value;
         const post = postInput.value;
+        postPreviewContent.textContent = postInput.value;
 
         if (title && post) {
-            completeBtn.style.backgroundColor = '#409344';
+            completeBtn.style.backgroundColor = '#748578';
             helperText.style.visibility = "hidden";
         } else {
-            completeBtn.style.backgroundColor = '#8fce92';       
+            completeBtn.style.backgroundColor = '#8a9f8f';       
         }
     });
 
@@ -167,12 +174,14 @@ function addImage(event) {
 
         reader.onload = function(e) {
             postImage.src = e.target.result;
+            postPreviewImage.src = e.target.result;
         }
         reader.readAsDataURL(file); 
     
         return;
     } 
 
+    postPreviewImage.src = "";
     document.getElementById("file-input").value = "";
 }
 

@@ -71,7 +71,7 @@ header {
 #profile-img {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 30%;
     cursor: pointer;
 
     transition: transform 0.2s ease;
@@ -191,7 +191,7 @@ header {
     width: 36px;
     height: 36px;
     margin-left: 24px;
-    border-radius: 50%;
+    border-radius: 30%;
     border: none;
 }
 
@@ -209,31 +209,45 @@ header {
 }
 
 #edit-btn {
+    width: 40px;
     font-size: 15px;
-    font-weight: 400;
-    margin-left: 500px;
+    font-weight: 700;
+    margin-left: 580px;
     line-height: 23.48px;
     padding: 0;
     border: none;
     background-color: #F4F5F7;
     position: absolute;
 
+    border-radius: 20px;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
     cursor: pointer;
+}
+
+#edit-btn:hover {
+    box-shadow: initial;
 }
 
 #delete-btn {
+    width: 40px;
     font-size: 15px;
-    font-weight: 400;
-    margin-left: 540px;
+    font-weight: 700;
+    margin-left: 620px;
     line-height: 23.48px;
     padding: 0;
     border: none;
     background-color: #F4F5F7;
     position: absolute;
 
+    border-radius: 20px;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+
     cursor: pointer;
 }
 
+#delete-btn:hover {
+    box-shadow: initial;
+}
 
 
 

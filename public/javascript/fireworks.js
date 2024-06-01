@@ -84,28 +84,35 @@
     }
 
     function eksplode(e) { 
-    var x, y, i, M, Z, N;
-    set_scroll();
-    y=(e)?e.pageY:event.y+sdown;
-    x=(e)?e.pageX:event.x+sleft;
-    N=++count%bangs;
-    M=Math.floor(Math.random()*3*colours.length);
-    intensity[N]=5+Math.random()*4;
-    for (i=N*sparks; i<(N+1)*sparks; i++) {
-        Xpos[i]=x;
-        Ypos[i]=y-5;
-        dY[i]=(Math.random()-0.5)*intensity[N];
-        dX[i]=(Math.random()-0.5)*(intensity[N]-Math.abs(dY[i]))*1.25;
-        decay[i]=16+Math.floor(Math.random()*16);
-        Z=stars[i].style;
-        if (M<colours.length) Z.color=colours[i%2?count%colours.length:M];
-        else if (M<2*colours.length) Z.color=colours[count%colours.length];
-        else Z.color=colours[i%colours.length];
-        Z.fontSize='13px';
-        Z.visibility='visible';
-    }
-    clearTimeout(timers[N]);
-    bang(N);
+        var target = e.target || e.srcElement;
+        if (target.tagName.toLowerCase() === 'input' || target.tagName.toLowerCase() === 'button' || target.tagName.toLowerCase() === 'textarea') {
+            return;
+        }
+
+        var x, y, i, M, Z, N;
+        set_scroll();
+        y=(e)?e.pageY:event.y+sdown;
+        x=(e)?e.pageX:event.x+sleft;
+        N=++count%bangs;
+        M=Math.floor(Math.random()*3*colours.length);
+        intensity[N]=5+Math.random()*4;
+
+        for (i=N*sparks; i<(N+1)*sparks; i++) {
+            Xpos[i]=x;
+            Ypos[i]=y-5;
+            dY[i]=(Math.random()-0.5)*intensity[N];
+            dX[i]=(Math.random()-0.5)*(intensity[N]-Math.abs(dY[i]))*1.25;
+            decay[i]=16+Math.floor(Math.random()*16);
+            Z=stars[i].style;
+            if (M<colours.length) Z.color=colours[i%2?count%colours.length:M];
+            else if (M<2*colours.length) Z.color=colours[count%colours.length];
+            else Z.color=colours[i%colours.length];
+            Z.fontSize='13px';
+            Z.visibility='visible';
+        }
+
+        clearTimeout(timers[N]);
+        bang(N);
     } 
 
     function set_width() {

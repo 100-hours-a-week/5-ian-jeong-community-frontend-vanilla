@@ -10,7 +10,7 @@
     <header>
         <div id="title-text">One Day One Post</div>
         <div id="header-box">
-            <img id="back-btn" src="/images/navi.png" alt="back" onClick="location.href='/posts'">
+            <img id="back-btn" src="/images/open-door.png" alt="back" onClick="location.href='/posts'">
             <img id="profile-img" src="" alt="profile-image">
 
             <div id="drop-down-box">
@@ -25,54 +25,65 @@
 
 
 
-
-    <div id="page-title">게시글 수정</div>
-
-
-
-
-
-    <form action="" method="POST" id="main">
-        <div id="title-edit-box">
-            <div id="title-edit-text">
-                제목*
-            </div>
-            
-            <input type="text" id="title-input" value="" name="title">
-            
-        </div>
-
-
-        <div id="post-edit-box">
-            <div id="post-edit-text">
-                내용*
-            </div>
-
-            
-
-            <textarea id="post-input" name="content"></textarea>
-            <div id="helper-text">*helper-text</div>
-        </div>
-
-
-        
-        <div id="image-selection-box">
-            <div id="image-selection-text">이미지</div>
-
-            <div id="image-label-box">
-                <label for="image-selection" id="image-label">파일 선택</label>
-                <div id="file-name"></div>
-            </div>
-
-            <input type="file" id="image-selection" value="" name="image" onchange="addImage(event)">
-            <img id="image" src="">
-        </div>
-
-        <button id="edit-btn">수정하기</button>
-
-    </form>
-
+    <div id="edit-post-box">
     
+        <form action="" method="POST" id="main">
+
+            <div id="page-title">게시글 수정</div>
+
+            <div id="title-edit-box">
+                <div id="title-edit-text">제목*</div>
+                <input type="text" id="title-input" value="" name="title">
+            </div>
+
+
+            <div id="post-edit-box">
+                <div id="post-edit-text">
+                    내용*
+                </div>
+
+                
+
+                <textarea id="post-input" name="content"></textarea>
+                <div id="helper-text">*helper-text</div>
+            </div>
+
+
+            
+            <div id="image-selection-box">
+                <div id="image-selection-text">이미지</div>
+
+                <div id="image-label-box">
+                    <label for="image-selection" id="image-label">파일 선택</label>
+                    <div id="file-name"></div>
+                </div>
+
+                <input type="file" id="image-selection" value="" name="image" onchange="addImage(event)">
+                <img id="image" src="">
+            </div>
+
+            <button id="edit-btn">수정하기</button>
+
+        </form>
+
+
+
+        <div id="preview-box">
+
+            <div id="preview-box-title-box">
+                <div id="preview-box-title">미리보기</div>
+            </div>
+
+
+            <div id="post-preview">
+                <div id="post-preview-title"></div> 
+                <img id="post-preview-image" src="" alt=" 이미지없음"></img>
+                <div id="post-preview-content"></div>  
+            </div>
+
+        </div>
+
+    </div>
     <script type="text/javascript" src="/javascript/edit-post.js"></script>
     <script type="text/javascript" src="/javascript/fireworks.js"></script>
 </body>

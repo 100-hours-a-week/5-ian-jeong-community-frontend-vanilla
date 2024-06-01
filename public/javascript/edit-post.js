@@ -20,6 +20,9 @@ const currentUrl = window.location.href;
 const urlParams = currentUrl.split('/');
 const postId = urlParams[urlParams.length - 2];
 
+const postPreviewTitle = document.getElementById("post-preview-title");
+const postPreviewImage = document.getElementById("post-preview-image");
+const postPreviewContent = document.getElementById("post-preview-content");
 
 init();
 
@@ -69,28 +72,31 @@ async function init() {
     titleInput.addEventListener("input", () => {
         const title = titleInput.value;
         const post = postInput.value;
+        postPreviewTitle.textContent = titleInput.value; 
     
         if (title.length > 26) {
             titleInput.value = title.slice(0, 26);
+            postPreviewTitle.textContent = titleInput.value; 
         }
 
         if (title && post) {
-            editBtn.style.backgroundColor = '#409344';
+            editBtn.style.backgroundColor = '#a3fcb8';
             helperText.style.visibility = "hidden";
         } else {
-            editBtn.style.backgroundColor = '#8fce92';        
+            editBtn.style.backgroundColor = '#8a9f8f';        
         }
     });
 
     postInput.addEventListener('input', () => {
         const title = titleInput.value;
         const post = postInput.value;
+        postPreviewContent.textContent = postInput.value;
 
         if (title && post) {
-            editBtn.style.backgroundColor = '#409344';
+            editBtn.style.backgroundColor = '#a3fcb8';
             helperText.style.visibility = "hidden";
         } else {
-            editBtn.style.backgroundColor = '#8fce92';       
+            editBtn.style.backgroundColor = '#8a9f8f';       
         }
     });
 
@@ -102,6 +108,10 @@ async function init() {
             postInput.value = postJson.post.content;
             fileName.textContent = postJson.post.imageName;
             image.src = postJson.post.image;
+
+            postPreviewTitle.textContent = postJson.post.title;
+            postPreviewContent.textContent = postJson.post.content;
+            postPreviewImage.src = postJson.post.image;
     });
 
 
@@ -180,12 +190,14 @@ function addImage(event) {
         reader.onload = function(e) {
             image.src = e.target.result;
             fileName.textContent = imageInput.value.split('\\').pop();
+            postPreviewImage.src = e.target.result;
         }
         reader.readAsDataURL(file); 
         
         return;
     } 
     
+    postPreviewImage.src = "";
     image.src = "";
     fileName.textContent = "";
 }

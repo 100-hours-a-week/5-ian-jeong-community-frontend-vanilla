@@ -77,7 +77,7 @@ async function init() {
         }
         
         if (title && post) {
-            completeBtn.style.backgroundColor = '#748578';
+            completeBtn.style.backgroundColor = '#a3fcb8';
             helperText.style.visibility = "hidden";
         } else {
             completeBtn.style.backgroundColor = '#8a9f8f';        
@@ -90,7 +90,7 @@ async function init() {
         postPreviewContent.textContent = postInput.value;
 
         if (title && post) {
-            completeBtn.style.backgroundColor = '#748578';
+            completeBtn.style.backgroundColor = '#a3fcb8';
             helperText.style.visibility = "hidden";
         } else {
             completeBtn.style.backgroundColor = '#8a9f8f';       

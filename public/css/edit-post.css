@@ -12,12 +12,16 @@ html {
 body {
     font-family: 'Dongle';
     width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: #F4F5F7;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    background-image : url('/images/forest.jpg');
+    background-size: cover;    
 }
 
 header {
@@ -28,6 +32,10 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    background-color: #8a9f8f;
+
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 #header-box {
@@ -44,11 +52,12 @@ header {
     font-size: 52px;
     line-height: 32px;
     position: absolute;
+    color: white;
 }
 
 #back-btn {
-    width: 16px;
-    height: 19px;
+    width: 40px;
+
     border: none;
     cursor: pointer;
 
@@ -141,29 +150,98 @@ header {
 
 
 
+#edit-post-box {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(244, 245, 247); 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    gap: 20px; 
+}   
 
 
-
-
-#page-title {
-    font-weight: 700;
-    font-size: 44px;
-    line-height: 31.2px;
-    letter-spacing: -0.1px;
-    margin-top: 2.2vh;
-}
-
-
-form {
-    margin-top: 4.7vh;
+#preview-box {
     width: 592px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+#preview-box-title-box {
+    margin-top: 40px;
+}
+
+#preview-box-title {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 31.2px;
+}
+
+#post-preview {
+    margin-top: 85px;
+    width: 544px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+
+
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+
+    overflow-y: auto;
+}
+
+#post-preview-title {
+    font-weight: 700;
+    font-size: 40px;
+    border-bottom: 1px solid #817f7f;
+}
+
+#post-preview-image {
+    margin-top: 15px;
+
+    width: 544px;
+}
+
+#post-preview-content {
+    margin-top: 15px;
+    font-size: 20px;
+    line-height: 15px;
+    word-break: break-all;
+}
+
+
+
+
+
+
+
+
+form {
+    width: 592px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#page-title {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 31.2px;
+    margin-top: 40px;
+}
+
+
 #title-edit-box {
     width: 592px;
+    margin-top: 51px;
 }
 
 #title-edit-text {
@@ -186,6 +264,10 @@ form {
     line-height: 22.56px;
     border-top: 1px solid rgba(0, 0, 0, 0.16);
     border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
 }
 
 
@@ -223,11 +305,16 @@ form {
     background-color: #F4F5F7;
     border-top: 1px solid rgba(0, 0, 0, 0.16);
     border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
 }
 
 #helper-text {
+    font-family: initial;
     color: #FF0000;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 12px;
     line-height: 14.52px;
     margin-left: 24px;

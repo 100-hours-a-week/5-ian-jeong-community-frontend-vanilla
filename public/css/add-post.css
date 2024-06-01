@@ -92,6 +92,8 @@ header {
     display: flex;
     flex-direction: column;
     visibility: hidden;
+
+    border-radius: 5px;
 }
 
 #user-edit-btn {
@@ -103,6 +105,9 @@ header {
     background-color: #D9D9D9;
     border: none;
     cursor: pointer;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #user-edit-btn:hover {
@@ -137,6 +142,9 @@ header {
     background-color: #D9D9D9;
     border: none;
     cursor: pointer;
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 

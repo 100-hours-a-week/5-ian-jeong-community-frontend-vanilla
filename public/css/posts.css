@@ -22,6 +22,8 @@ body {
     align-items: center;
 
     background-color: #F4F5F7;
+    background-image : url('/images/forest.jpg');
+    background-size: cover;    
 }
 
 header {
@@ -34,6 +36,10 @@ header {
     justify-content: center;
 
     border-bottom: 1px solid #000;
+
+    background-color: #8a9f8f;
+
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 #header-box {
@@ -52,6 +58,7 @@ header {
     line-height: 32px;
 
     position: absolute;
+    color: white;
 }
 
 
@@ -83,9 +90,13 @@ header {
 
     border: 1px solid #000;
     visibility: hidden;
+    
+    border-radius: 5px;
 }
 
 #user-edit-btn {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     width: 115px;
     height: 35px;
 
@@ -137,6 +148,9 @@ header {
     line-height: 14.52px;
 
     cursor: pointer;
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 

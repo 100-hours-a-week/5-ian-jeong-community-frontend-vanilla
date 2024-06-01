@@ -85,21 +85,21 @@ async function init() {
             helperText.textContent = "*닉네임을 입력해주세요.";   
             helperText.style.color = "#FF0000";
             isCorrectNickname = false;
-            editBtn.style.backgroundColor = "#8fce92";
+            editBtn.style.backgroundColor = "#8a9f8f";
 
         } else if (value.search(/\s/) != -1) { 
             helperText.style.visibility = "visible";
             helperText.textContent = "*띄어쓰기를 업애주세요.";
             helperText.style.color = "#FF0000";
             isCorrectNickname = false;
-            editBtn.style.backgroundColor = "#8fce92";
+            editBtn.style.backgroundColor = "#8a9f8f";
 
         } else if (value.length > 11) { 
             helperText.style.visibility = "visible";
             helperText.textContent = "*닉네임은 최대 10자 까지 작성 가능합니다.";
             helperText.style.color = "#FF0000";
             isCorrectNickname = false;
-            editBtn.style.backgroundColor = "#8fce92";
+            editBtn.style.backgroundColor = "#8a9f8f";
 
         } else {
             const flag = {'flag' : false};
@@ -114,12 +114,12 @@ async function init() {
                 helperText.style.visibility = "visible";
                 helperText.textContent = "*중복된 닉네임 입니다.";
                 helperText.style.color = "#FF0000";
-                editBtn.style.backgroundColor = "#8fce92";
+                editBtn.style.backgroundColor = "#8a9f8f";
                 isCorrectNickname = false;
             
             } else {
                 isCorrectNickname = true;
-                editBtn.style.backgroundColor = "#409344";
+                editBtn.style.backgroundColor = "#748578";
                 helperText.style.visibility = "visible";
                 helperText.textContent = "*사용가능한 닉네임입니다.";
                 helperText.style.color = "#0040FF";
@@ -203,8 +203,8 @@ async function init() {
         .then(response => {
             if (response.status === 204) {
                 alert('회원탈퇴 되었습니다 !');
-                window.location.href = '/users/sign-in';
-
+                window.close(); 
+                window.opener.location.replace('/users/sign-in');
             } else {
                 alert('회원탈퇴 실패!');
                 window.location.href = `/users/${userId}`;
@@ -261,5 +261,5 @@ async function validateDuplicateNickname(nickname, flag) {
 
 
 function executeToast() {
-    editCompleteBtn.style.marginTop = "5.9vh";
+    editCompleteBtn.style.opacity = "1";
 }

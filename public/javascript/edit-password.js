@@ -142,7 +142,7 @@ async function init() {
                     .then(response => {
                         editBtn.disabled = 'false';
                     if (response.status === 204) {
-                        window.location.href = `/users/${userId}/password`;
+                        window.close();
                     } else {
                         alert('비밀번호 수정 실패');
                         window.location.href = `/users/${userId}/password`;
@@ -195,16 +195,16 @@ function validatePasswordDouble() {
 
 
 function executeToast() {
-    editCompleteBtn.style.marginTop = "5.9vh";
+    editCompleteBtn.style.opacity = "1";
 }
 
 
 function validateAll() {
     if (isCorrectPassword && isCorrectRePassword) {
-        editBtn.style.backgroundColor = "#409344"
+        editBtn.style.backgroundColor = "#748578"
         editBtn.disabled = false;
     } else {
-        editBtn.style.backgroundColor = "#8fce92"
+        editBtn.style.backgroundColor = "#8a9f8f"
         editBtn.disabled = true;
     }
 }

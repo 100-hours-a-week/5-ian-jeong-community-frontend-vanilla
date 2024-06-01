@@ -6,16 +6,28 @@ const emailInput = document.getElementById('email-input');
 const passwordInput = document.getElementById('password-input');
 const helperText = document.getElementById('helper-text'); 
 const signInBtn = document.getElementById('sign-in-btn');
+const loading = document.getElementById('loading');
+const loadingBackground = document.getElementById('loading-background');
 
 
 signInBtn.addEventListener('click', async (event) => {
     event.preventDefault();
+    // 화면이동 대기창 보여주기
+    // 끝나면 대기창 없애는것도 잊지말자 
+    // 완성하면 리액트에 적용
 
     if (await validateSignIn()) { 
+        loading.style.display = 'block';
+        loadingBackground.style.display = 'block';
         signInBtn.disabled = true;
+        
+
+
         setTimeout(() => {
-            signInBtn.style.backgroundColor = '#8fce92';
+            signInBtn.style.backgroundColor = '#8a9f8f';
             signInBtn.disabled = false;
+            loading.style.display = 'none';
+            loadingBackground.style.display = 'none';
             window.location.href = '/posts';
         }, 3000);        
     }
@@ -53,7 +65,7 @@ async function validateSignIn() {
     await validateAccount(flag, email, password);
     
     if (flag['flag']) {
-        document.getElementById('sign-in-btn').style.backgroundColor = '#409344';
+        document.getElementById('sign-in-btn').style.backgroundColor = '#748578';
         helperText.style.visibility = 'hidden';
         
         return flag['flag'];

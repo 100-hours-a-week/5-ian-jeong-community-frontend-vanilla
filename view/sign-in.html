@@ -33,7 +33,7 @@
         <div id="sign-in-box-right">
             <div id="sign-in-title">One Day One Post</div>
             <div id="sign-in-text">꾸준한 포스팅으로 본인의 생각을 정리하고 펼쳐주세요 !</div>
-            <button id="sign-up-btn" onclick="location.href='/users/sign-up'">회원가입</button>
+            <button id="sign-up-btn" onclick="openSignUpPage()">회원가입</button>
         </div>
         
     </div>
@@ -63,6 +63,11 @@
 
         localStorage.setItem('backend-ip-port', BACKEND_IP_PORT);        
     </script>
+    <script>
+        function openSignUpPage() {
+            window.open('/users/sign-up', 'sign-up', "width=620,height=900,top=0,left=0");
+        }
+        </script>
     <script type="text/javascript" src="/javascript/sign-in.js"></script>
     <script type="text/javascript" src="/javascript/fireworks.js"></script>
 </body>

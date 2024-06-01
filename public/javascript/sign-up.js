@@ -247,10 +247,10 @@ async function validateDuplicateNickname(nickname, flag) {
 
 function validateAll() {
     if (isCorrectEmail && isCorrectPassword && isCorrectRePassword && isCorrectNickname) {
-        signUpBtn.style.backgroundColor = '#409344';
+        signUpBtn.style.backgroundColor = '#a3fcb8';
         signUpBtn.disabled = false;
     } else {
-        signUpBtn.style.backgroundColor = '#8fce92';
+        signUpBtn.style.backgroundColor = '#8a9f8f';
         signUpBtn.disabled = true;
     }
 }
@@ -281,10 +281,10 @@ signUpBtn.addEventListener('click', async (event) => {
         .then(response => {
         if (response.status === 201) {
             alert('회원가입이 완료되었습니다!');
-            window.location.href = '/users/sign-in';
+            window.close();
         } else {
             alert('회원가입에 실패하였습니다!');
-            window.location.href = '/users/sign-up';
+            window.close();
         }
       })
       .catch(error => {

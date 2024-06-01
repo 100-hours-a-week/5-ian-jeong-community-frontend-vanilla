@@ -12,9 +12,6 @@ const loadingBackground = document.getElementById('loading-background');
 
 signInBtn.addEventListener('click', async (event) => {
     event.preventDefault();
-    // 화면이동 대기창 보여주기
-    // 끝나면 대기창 없애는것도 잊지말자 
-    // 완성하면 리액트에 적용
 
     if (await validateSignIn()) { 
         loading.style.display = 'block';

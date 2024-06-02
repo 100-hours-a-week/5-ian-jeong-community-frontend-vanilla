@@ -25,7 +25,7 @@ body {
 
 header {
     width: 100%;
-    height: 9.6vh;
+    height: 70px;
     border-bottom: 1px solid #000;
     display: flex;
     flex-direction: row;
@@ -40,7 +40,7 @@ header {
 
 #header-box {
     width: 592px;
-    height: 9.6vh;
+    height: 70px;
     display: flex;
     flex-direction: row;
     align-items:center;
@@ -71,7 +71,7 @@ header {
 #profile-img {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 30%;
     cursor: pointer;
 
     transition: transform 0.2s ease;
@@ -353,7 +353,8 @@ form {
     background-color: #8a9f8f;
     border: none;
     border-radius: 20px;
-    color: #FFFFFF;
+    color: #000;
+    font-weight: 700;
     box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
 
     transition-property: background-color;

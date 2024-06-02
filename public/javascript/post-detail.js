@@ -121,6 +121,10 @@ async function init() {
                 });
             
             time.textContent = postJson.post.created_at;
+            
+            if (postJson.post.imageName == "") {
+                postImage.style.display = "none";
+            } 
             postImage.src = postJson.post.image;
             postText.textContent = postJson.post.content;
             hitsNum.textContent = makeShortNumber(parseInt(postJson.post.view_count));

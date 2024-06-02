@@ -51,10 +51,10 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/posts`)
         .then(postsData => postsData.json())
         .then(postsJson => {
-
+            const temp = postsJson.result.slice();
             const topPosts = postsJson.result.sort((a, b) => b.view_count - a.view_count).slice(0, 3);
-
-            postsJson.result.forEach(post => {
+            
+            temp.forEach(post => {
                 const postBox = document.createElement('div');
                 postBox.classList.add('post-box');
                     

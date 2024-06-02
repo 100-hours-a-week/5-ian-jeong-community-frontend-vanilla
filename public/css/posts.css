@@ -12,7 +12,7 @@ html {
 body {
     font-family: 'Dongle';
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
     margin: 0;
     padding: 0;
@@ -29,7 +29,7 @@ body {
 
 header {
     width: 100%;
-    height: 9.6vh;
+    height: 70px;
 
     display: flex;
     flex-direction: row;
@@ -176,6 +176,7 @@ header {
 #welcome-text {
     text-align: center;
     width: 20%;
+    margin-top: 10px;;
 
     font-weight: 400;
     font-size: 35px;

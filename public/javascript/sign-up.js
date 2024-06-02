@@ -268,7 +268,7 @@ signUpBtn.addEventListener('click', async (event) => {
         nickname: `${nicknameInput.value}`,
         image: `${preview.src}`
     }
-        
+    
     const data = {
         method: 'POST',
         headers: {

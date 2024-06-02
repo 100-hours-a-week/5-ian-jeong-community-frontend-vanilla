@@ -8,7 +8,7 @@
 
 ##### Demo
 
-__[🔗 커뮤니티 서비스 데모 영상](https://youtu.be/BByaBgOgieg)__
+__[🔗 커뮤니티 서비스 데모 영상](https://youtu.be/o1n0EyZVABo)__
 
 
 <br>

@@ -156,10 +156,12 @@ async function init() {
                         editBtn.disabled = 'false';
                     if (response.status === 204) {
                         window.location.href = `/users/${userId}`;
+                        window.opener.location.reload();
                     } else {
                         alert('회원정보 수정 실패');
                         window.location.href = `/users/${userId}`;
                     }
+                    editBtn.disabled = 'false';
                   })
                   .catch(error => {
                     console.error('fetch error:', error);
@@ -241,6 +243,7 @@ function addImage(event) {
         reader.onload = function(e) {
             preview.src = e.target.result;
         }
+        
         reader.readAsDataURL(file); 
         
     } else {

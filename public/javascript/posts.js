@@ -51,6 +51,9 @@ async function init() {
     await fetch(`${BACKEND_IP_PORT}/posts`)
         .then(postsData => postsData.json())
         .then(postsJson => {
+
+            const topPosts = postsJson.result.sort((a, b) => b.view_count - a.view_count).slice(0, 3);
+
             postsJson.result.forEach(post => {
                 const postBox = document.createElement('div');
                 postBox.classList.add('post-box');
@@ -124,8 +127,89 @@ async function init() {
                 postBox.appendChild(line);
                 postBox.appendChild(downPost);
                     
-                document.body.appendChild(postBox);
+                // document.body.appendChild(postBox);
+                document.getElementById("left-post-box-content").appendChild(postBox);
 
+                postBox.addEventListener('click', () => {
+                    window.location.href = `/posts/${postBox.id}`;
+                });
+            });
+
+            topPosts.forEach(post => {
+                const postBox = document.createElement('div');
+                postBox.classList.add('post-box');
+                    
+                const upPost = document.createElement('div');
+                upPost.classList.add('up-post');
+                    
+                const postTitle = document.createElement('div');
+                postTitle.classList.add('post-title');
+                    
+                const postLogBox = document.createElement('div');
+                postLogBox.classList.add('post-log-box');
+                    
+                const like = document.createElement('div');
+                like.classList.add('like');
+    
+                const comment = document.createElement('div');
+                comment.classList.add('comment');
+    
+                const hits = document.createElement('div');
+                hits.classList.add('hits');
+    
+                const time = document.createElement('div');
+                time.classList.add('time');
+    
+                const line = document.createElement('hr');
+                line.classList.add('line1');
+    
+                const downPost = document.createElement('div');
+                downPost.classList.add('down-post');
+    
+                const profileImage = document.createElement('img');
+                profileImage.classList.add('profile-image');
+    
+                const writer = document.createElement('div');
+                writer.classList.add('writer');
+    
+                postBox.id = post.id;
+    
+                if (post.title.length > 26) {
+                    postTitle.textContent = post.title.slice(0, 27) + "...";
+                } else {
+                    postTitle.textContent = post.title;
+                }
+    
+                like.textContent = `좋아요 ${makeShortNumber(post.like_count)}`;
+                comment.textContent = `댓글 ${makeShortNumber(post.comment_count)}`;
+                hits.textContent = `조회수 ${makeShortNumber(post.view_count)}`;
+    
+                time.textContent = post.created_at;
+                    
+                fetch(`${BACKEND_IP_PORT}/users/${post.user_id}`)
+                    .then(userData => userData.json())
+                    .then(userJson => {
+                        profileImage.src = userJson.result.image;
+                        writer.textContent = userJson.result.nickname;
+                    });
+    
+                postLogBox.appendChild(like);
+                postLogBox.appendChild(comment);
+                postLogBox.appendChild(hits);
+                postLogBox.appendChild(time);
+                    
+                upPost.appendChild(postTitle);
+                upPost.appendChild(postLogBox);
+            
+                downPost.appendChild(profileImage);
+                downPost.appendChild(writer);
+                    
+                postBox.appendChild(upPost);
+                postBox.appendChild(line);
+                postBox.appendChild(downPost);
+                    
+                document.getElementById("right-post-box-content").appendChild(postBox);
+    
                 postBox.addEventListener('click', () => {
                     window.location.href = `/posts/${postBox.id}`;
                 });

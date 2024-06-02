@@ -45,11 +45,11 @@ async function init() {
     userId = result.id;
 
     userEditBtn.addEventListener('click', (event) => {
-        window.location.href=`/users/${userId}/edit`;
+        window.open(`/users/${userId}`, "계정 업데이트", "width=620,height=600,top=0,left=0");
     });
 
     passwordEditBtn.addEventListener('click', (event) => {
-        window.location.href=`/users/${userId}/password`;
+        window.open(`/users/${userId}/password`, "비밀번호 수정", "width=620,height=600,top=0,left=0");
     })
 
 

@@ -15,7 +15,6 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #F4F5F7;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,7 +155,7 @@ header {
 #post-detail-whole {
     width: 100%;
     
-    background: rgba(244, 245, 247); 
+    background-color:rgb(242, 239, 234);
     display: flex;
     flex-direction: column;
     align-items: center;

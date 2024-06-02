@@ -153,11 +153,11 @@ async function init() {
                 writerInfoTimeDiv.classList.add('writer-info-time');
                 writerInfoTimeDiv.textContent = comment.created_at;
                         
-                const contentInput = document.createElement('input');
+                const contentInput = document.createElement('div');
                 contentInput.classList.add('content-info');
-                contentInput.type = 'text';
-                contentInput.value = comment.content;
-                contentInput.readOnly = true;
+                // contentInput.type = 'text';
+                contentInput.textContent = comment.content;
+                // contentInput.readOnly = true;
                         
                 const btnInfoDiv = document.createElement('div');
                 btnInfoDiv.classList.add('btn-info');
@@ -201,7 +201,7 @@ async function init() {
                     addCommentBtn.style.backgroundColor = "#7cc08c";
                     addCommentBtn.disabled = false;
             
-                    commentInput.value = contentInput.value;
+                    commentInput.value = contentInput.textContent;
                 });
                         
                         

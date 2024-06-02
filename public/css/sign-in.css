@@ -129,7 +129,7 @@ body {
 
 #helper-text {
     font-family:initial;
-    width: 355px;
+    /* width: 355px; */
     margin-top: 10px;
 
     color: #FF0000;
